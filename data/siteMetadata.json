@@ -1,0 +1,18 @@
+{
+  "title": "Axels Blog",
+  "author": "Axel Nilsson",
+  "headerTitle": "Axels Blog",
+  "description": "A blog created with Next.js and Tailwind.css",
+  "language": "en-us",
+  "siteUrl": "https://axels.blog",
+  "siteRepo": "https://github.com/AxelNilsson/Blog",
+  "image": "/static/images/avatar.png",
+  "socialBanner": "/static/images/twitter-card.png",
+  "email": "axel@axels.blog",
+  "github": "https://github.com/AxelNilsson",
+  "twitter": "https://twitter.com/axel__nilsson",
+  "facebook": "https://facebook.com",
+  "youtube": "https://www.youtube.com/channel/UCqGV8YFU8nqf7K_20T7Uj-g",
+  "linkedin": "https://www.linkedin.com",
+  "locale": "en-US"
+}

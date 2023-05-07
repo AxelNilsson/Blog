@@ -1,0 +1,135 @@
+---
+title: 'The Time Machine'
+date: '2023-04-28'
+tags: ['writings', 'book', 'reflection']
+draft: false
+summary: 'The Time Traveller (for so it will be convenient to speak of him) was
+expounding a recondite matter to us. His pale grey eyes shone and
+twinkled, and his usually pale face was flushed and animated...'
+---
+
+# How to Use the mockall Crate to Mock AWS SDK for DynamoDB in Rust for Faster, Offline Testing
+
+When writing applications in Rust that interact with AWS DynamoDB, it's crucial to have a solid testing strategy in place. However, running tests against actual AWS resources can be slow, expensive, and require an active internet connection. This is where mocking comes into play. The mockall crate allows you to create mock versions of your AWS SDK for DynamoDB dependencies, speeding up your tests and making them available offline. In this blog post, we will explore how to use the mockall crate to mock AWS SDK for DynamoDB in Rust for testing purposes.
+Prerequisites:
+
+To follow along with this tutorial, you should have:
+
+    A basic understanding of Rust programming.
+    Familiarity with the AWS SDK for Rust, particularly the DynamoDB module.
+    Installed the latest version of Rust and Cargo.
+
+Step 1: Add Dependencies to Cargo.toml
+
+To begin, add the necessary dependencies to your Cargo.toml file:
+
+[dependencies]
+aws-sdk-dynamodb = "0.0.25-alpha"
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+tokio = { version = "1", features = ["full"] }
+mockall = { version = "0.10", features = ["derive"] }
+
+Step 2: Define a Trait for Your DynamoDB Operations
+
+Start by defining a trait for the DynamoDB operations you want to mock. In this example, we'll focus on the GetItem and PutItem operations. Create a new file named dynamodb_client.rs and add the following code:
+
+use aws_sdk_dynamodb::Client;
+use aws_sdk_dynamodb::model::{AttributeValue, GetItemInput, PutItemInput};
+use serde::Deserialize;
+use std::collections::HashMap;
+
+pub trait DynamoDbClient {
+    async fn get_item(&self, input: GetItemInput) -> Result<HashMap<String, AttributeValue>, aws_sdk_dynamodb::Error>;
+    async fn put_item(&self, input: PutItemInput) -> Result<(), aws_sdk_dynamodb::Error>;
+}
+
+Step 3: Implement the Trait for the Real DynamoDB Client
+
+Now, implement the DynamoDbClient trait for the actual DynamoDB client provided by the AWS SDK. In the same dynamodb_client.rs file, add the following implementation:
+
+use aws_sdk_dynamodb::Client;
+
+impl DynamoDbClient for Client {
+    async fn get_item(&self, input: GetItemInput) -> Result<HashMap<String, AttributeValue>, aws_sdk_dynamodb::Error> {
+        let resp = self.get_item().input(input).send().await?;
+        Ok(resp.item.unwrap_or_default())
+    }
+
+    async fn put_item(&self, input: PutItemInput) -> Result<(), aws_sdk_dynamodb::Error> {
+        self.put_item().input(input).send().await?;
+        Ok(())
+    }
+}
+
+Step 4: Create a Mock Implementation of the Trait
+
+Next, use the mockall crate to generate a mock implementation of the DynamoDbClient trait. Add the following code to dynamodb_client.rs:
+
+#[cfg(test)]
+use mockall::automock;
+
+#[cfg_attr(test, automock)]
+pub trait DynamoDbClient {
+    async fn get_item(&self, input: GetItemInput) -> Result<HashMap<String, AttributeValue>, aws_sdk_dynamodb::Error>;
+    async fn put_item(&self, input: PutItemInput) -> Result<(), aws_sdk_dynamodb::Error>;
+}
+``
+
+Step 5: Use the Mock in Your Tests
+
+Now that you have a mock implementation of the DynamoDbClient trait, you can use it in your tests. Create a new file named dynamodb_client_tests.rs and add the following code:
+
+#[cfg(test)]
+mod tests {
+    use super::*;
+    use mockall::predicate::*;
+    use std::collections::HashMap;
+
+    #[tokio::test]
+    async fn test_get_item() {
+        let mut mock_dynamo = MockDynamoDbClient::new();
+
+        let mut expected_item = HashMap::new();
+        expected_item.insert("id".to_string(), AttributeValue::s("123"));
+
+        let input = GetItemInput::builder().key(expected_item.clone()).build().unwrap();
+
+        mock_dynamo.expect_get_item()
+            .with(input.clone())
+            .times(1)
+            .return_once(move |_| Ok(expected_item.clone()));
+
+        let result = mock_dynamo.get_item(input).await.unwrap();
+        assert_eq!(result, expected_item);
+    }
+
+    #[tokio::test]
+    async fn test_put_item() {
+        let mut mock_dynamo = MockDynamoDbClient::new();
+
+        let mut item = HashMap::new();
+        item.insert("id".to_string(), AttributeValue::s("123"));
+
+        let input = PutItemInput::builder().item(item.clone()).build().unwrap();
+
+        mock_dynamo.expect_put_item()
+            .with(input.clone())
+            .times(1)
+            .return_once(|_| Ok(()));
+
+        let result = mock_dynamo.put_item(input).await;
+        assert!(result.is_ok());
+    }
+}
+
+In the test cases above, we use the MockDynamoDbClient to test the get_item and put_item operations. The expect_* methods are used to set up expectations on how the mock object should be called, including input parameters, call count, and return values. When the mock object is called as expected, the assertions in the tests will pass.
+Step 6: Run Your Tests
+
+With everything set up, you can now run your tests using the following command:
+
+$ cargo test
+
+Your tests should run quickly and without requiring a connection to AWS. The mockall crate enables you to easily test your application's logic without incurring the costs and delays of interacting with actual AWS resources.
+
+In this blog post, we explored how to use the mockall crate to mock AWS SDK for DynamoDB in Rust for testing purposes. By using the mockall crate, you can create mock implementations of your dependencies, making your tests faster and available offline. This approach is particularly useful when working with external services like AWS, where interactions can be slow and costly. By applying the steps outlined in this post, you can improve the efficiency and reliability of your Rust applications that interact with AWS DynamoDB.

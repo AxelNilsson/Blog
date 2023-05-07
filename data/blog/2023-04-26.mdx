@@ -1,0 +1,49 @@
+---
+title: 'The Time Machine'
+date: '2023-04-26'
+tags: ['writings', 'book', 'reflection']
+draft: false
+summary: 'The Time Traveller (for so it will be convenient to speak of him) was
+expounding a recondite matter to us. His pale grey eyes shone and
+twinkled, and his usually pale face was flushed and animated...'
+---
+
+# The Hidden Dangers of Relying on Open Source Projects with Unknown Authors: Lessons from the Actix-Web Saga
+
+
+
+The open-source community has contributed immensely to the development of software and technology. With numerous programmers collaborating and sharing their expertise, we have seen the rapid growth and improvement of countless tools, libraries, and frameworks. However, despite the many advantages, relying on open source projects with unknown authors comes with its risks. In this blog post, we will examine the dangers of depending too much on open-source projects and discuss the near-miss incident of the Actix-Web framework to drive home the point.
+The Actix-Web Incident
+
+Actix-Web is an asynchronous web framework for Rust, a popular programming language designed for performance, safety, and concurrency. Actix-Web gained traction among developers for its impressive performance benchmarks and user-friendly interface. However, in January 2020, the primary author and maintainer of the project, identified only by their GitHub username 'fafhrd91,' decided to step down and archive the project.
+
+This decision came after the project faced strong criticism from the Rust community for its use of unsafe code. While the maintainer attempted to address the concerns and make improvements, the criticism continued, ultimately leading to their departure from the project.
+
+The Actix-Web incident serves as a prime example of the potential risks associated with relying on open-source projects with unknown authors. It illustrates the importance of understanding the implications of using such projects, especially for critical applications. Let's take a closer look at some of the dangers.
+
+When an open-source project is managed and maintained by an unknown author, it can be challenging to hold them accountable for their actions. In the case of Actix-Web, the primary author's departure led to the temporary unavailability of the framework, causing panic among users who had built applications using it. Without knowing the real identity of the author, it is impossible to track them down or hold them responsible for any potential damage caused by their sudden departure.
+
+Open source projects maintained by unknown authors can vanish without warning, as the Actix-Web incident has shown. This can be disastrous for those who have built applications using the framework or library, as they might suddenly find themselves without support or updates. This can lead to security vulnerabilities, compatibility issues, and general instability in the applications that rely on the missing project.
+
+While open-source projects are generally considered more secure due to the large number of eyes examining the code, there is still the potential for security risks. In the case of Actix-Web, the use of unsafe code led to a significant backlash from the Rust community. The risk of security vulnerabilities increases when a project is maintained by an unknown author, as their motivations and expertise are unclear.
+
+Projects maintained by unknown authors may have limited resources and contributions, which can hinder the project's development and growth. With fewer people contributing to the project, the chances of discovering and fixing bugs and vulnerabilities are reduced. Additionally, the project might suffer from a lack of new features and improvements, which can limit its usefulness and make it less competitive compared to more established alternatives.
+
+Relying on a single person or a small group of unknown authors for the maintenance of an open-source project can be risky. If the primary author decides to abandon the project or becomes unable to continue their work, the project may lose its momentum or cease to exist altogether. In the Actix-Web case, the departure of the primary author led to a temporary halt of the project, causing significant distress for its users.
+Mitigating the Risks
+
+To minimize the risks associated with using open-source projects with unknown authors, consider implementing the following strategies:
+
+Before adopting an open-source project, assess its overall health by examining factors such as the number of contributors, the frequency of commits, and the responsiveness of maintainers to issues and pull requests. A healthy project with an active community is less likely to disappear suddenly or suffer from neglect.
+
+Try not to rely on a single open-source project or author for critical components of your applications. Instead, diversify your dependencies and consider using multiple libraries or frameworks that achieve the same purpose. This approach can reduce the impact of a project's sudden disappearance or loss of support.
+
+Keep an eye on security vulnerabilities and updates for the open-source projects you use. Subscribe to mailing lists, follow issue trackers, and stay informed about the latest developments in the projects you depend on. This can help you react quickly to potential security issues and minimize their impact on your applications.
+
+If you are heavily invested in an open-source project with an unknown author, consider maintaining your own fork of the project. By doing so, you can continue to develop the project, fix bugs, and introduce new features even if the original project disappears or loses support. This can be a labor-intensive task but may be worth the effort for critical dependencies.
+
+Participate in the open-source community by contributing to projects, reporting issues, and helping others. By engaging with the community, you can gain a better understanding of the project's direction and the motivations of its maintainers. This can help you make more informed decisions about whether to continue relying on a particular project or search for alternatives.
+
+While open-source projects with unknown authors can offer valuable tools and resources, the Actix-Web incident highlights the potential risks of relying too heavily on such projects. It is essential to recognize the dangers and take steps to mitigate them, such as evaluating a project's health, diversifying dependencies, monitoring security vulnerabilities, maintaining your own fork, and engaging with the community.
+
+By being vigilant and proactive in your approach to using open-source projects, you can minimize the risks and continue to reap the benefits of the vibrant and innovative open-source ecosystem.

@@ -10,8 +10,6 @@ twinkled, and his usually pale face was flushed and animated...'
 
 # Building Solid Foundations: A Beginner's Guide to HTML Structure for IndieHackers
 
-
-
 Hey IndieHackers! Are you ready to start building your personal web project? One of the first steps in web development is learning HTML, the language used to create the structure of a webpage. In this blog post, we'll explore the basics of HTML structure, with a focus on keeping things intuitive and engaging. By the end of this post, you'll have a solid understanding of HTML and be ready to create the foundation of your personal project.
 What is HTML?
 
@@ -22,6 +20,7 @@ HTML Documents and Basic Structure
 
 An HTML document has a specific structure, which consists of a doctype declaration, an opening and closing <html> tag, a <head> section, and a <body> section. Let's take a look at a simple example:
 
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -32,6 +31,7 @@ An HTML document has a specific structure, which consists of a doctype declarati
     <p>This is a paragraph of text.</p>
 </body>
 </html>
+```
 
 Here, <!DOCTYPE html> declares the HTML version being used (in this case, HTML5). The <head> section contains meta information about the page, such as the <title> that appears in the browser's title bar or tab. The <body> section contains the main content of the page, including headings, paragraphs, images, and more.
 HTML Elements and Tags
@@ -40,26 +40,33 @@ Now that we understand the basic structure of an HTML document let's explore som
 
 Headings: Headings are used to define the titles or subtitles of your content. HTML offers six levels of headings, <h1> to <h6>, with <h1> being the largest and <h6> being the smallest.
 
+```
 <h1>This is a Main Heading</h1>
 <h2>This is a Subheading</h2>
 <h3>This is a Smaller Subheading</h3>
+```
 
 Paragraphs: To create a paragraph, use the <p> tag.
 
-<h1>This is a Main Heading</h1>
-<h2>This is a Subheading</h2>
-<h3>This is a Smaller Subheading</h3>
+```
+<p>This is a paragraph of text.</p>
+```
 
 Links: To create a hyperlink, use the <a> tag and the href attribute to specify the destination URL.
 
+```
 <a href="https://www.example.com">Visit Example.com</a>
+```
 
 Images: To display an image, use the <img> tag with the src attribute to specify the image source. You can also use the alt attribute to provide a description for the image.
 
+```
 <img src="image.jpg" alt="A beautiful landscape">
+```
 
 Lists: HTML offers two types of lists: ordered lists (<ol>) and unordered lists (<ul>). List items are represented by the <li> tag.
 
+```
 <ol>
     <li>First item</li>
     <li>Second item</li>
@@ -68,6 +75,7 @@ Lists: HTML offers two types of lists: ordered lists (<ol>) and unordered lists 
     <li>Bullet item</li>
     <li>Another bullet item</li>
 </ul>
+```
 
 Understanding how these basic elements work together is crucial for shaping the overall layout and content of your web project. As you practice, you'll become more familiar with how to create a well-structured and organized webpage.
 Nesting HTML Elements
@@ -76,6 +84,7 @@ In HTML, elements can be nested within other elements, allowing you to create mo
 
 For example, let's say you want to create a list within a paragraph:
 
+```
 <p>Here are some of my favorite fruits:
     <ul>
         <li>Apples</li>
@@ -83,6 +92,7 @@ For example, let's say you want to create a list within a paragraph:
         <li>Oranges</li>
     </ul>
 </p>
+```
 
 In this example, the unordered list (<ul>) is nested within the paragraph (<p>), and the list items (<li>) are nested within the list.
 HTML Attributes
@@ -91,7 +101,9 @@ HTML attributes are used to provide additional information or modify the behavio
 
 For example, let's add a class attribute to a paragraph element:
 
+```
 <p class="highlight">This paragraph will have a special style applied to it.</p>
+```
 
 In this example, the class attribute with the value "highlight" is added to the <p> tag. This attribute can then be used in conjunction with CSS to style the paragraph differently from other paragraphs on the page.
 Creating a Basic HTML Structure for Your Project
@@ -100,6 +112,7 @@ Now that you're familiar with the basic HTML elements and concepts, it's time to
 
 For example, let's say you're building a personal blog. Your HTML structure might look something like this:
 
+```
 <!DOCTYPE html>
 <html>
 <head>
@@ -127,6 +140,7 @@ For example, let's say you're building a personal blog. Your HTML structure migh
     </footer>
 </body>
 </html>
+```
 
 This basic structure includes a header, navigation, main content area, and footer, each containing the appropriate HTML elements.
 

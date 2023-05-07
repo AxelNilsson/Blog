@@ -17,6 +17,7 @@ Rust's key feature is its focus on memory safety, achieved through its innovativ
 
 For example, let's consider a simple function that returns the sum of two numbers:
 
+```
 fn add(a: i32, b: i32) -> i32 {
     a + b
 }
@@ -27,11 +28,13 @@ fn main() {
     let result = add(x, y);
     println!("The sum of {} and {} is {}", x, y, result);
 }
+```
 
 In this example, Rust's ownership system ensures that the values x and y are not modified during the add function's execution. The ownership rules prevent any accidental modifications to the data, thus eliminating a whole class of bugs.
 
 In languages like C and C++, it's possible to modify input parameters through pointers. This can lead to unexpected results, especially when the same variable is used in multiple places. Let's see an example in C++:
 
+```
 #include <iostream>
 
 void add(int* a, int* b, int* result) {
@@ -46,11 +49,13 @@ int main() {
     add(&x, &y, &result);
     std::cout << "The sum of " << x << " and " << y << " is " << result << std::endl;
 }
+```
 
 In this example, the add function receives pointers to integers a, b, and result. After adding a and b, it modifies the value of a to 0. When the program prints the result, it shows that the value of x has been unexpectedly modified inside the add function.
 
 In Rust, you would need to use mutable references to achieve the same behavior, but the ownership system helps to prevent accidental modifications:
 
+```
 fn add(a: &mut i32, b: &i32) -> i32 {
     let result = *a + *b;
     *a = 0; // Intentionally modifying the input parameter a
@@ -63,6 +68,7 @@ fn main() {
     let result = add(&mut x, &y);
     println!("The sum of {} and {} is {}", x, y, result);
 }
+```
 
 In this Rust example, we explicitly mark a as a mutable reference, signaling our intention to modify its value within the add function. This makes the code more explicit and helps prevent accidental modifications.
 
@@ -73,6 +79,7 @@ Concurrency is a crucial aspect of modern programming, as it allows for better r
 
 Here's an example using the std::thread module to demonstrate Rust's concurrency:
 
+```
 use std::thread;
 use std::sync::{Mutex, Arc};
 
@@ -95,6 +102,7 @@ fn main() {
 
     println!("Result: {}", *counter.lock().unwrap());
 }
+```
 
 In this example, we create ten threads that increment a shared counter. Rust's concurrency model, along with the Arc and Mutex constructs, ensures that the counter is safely accessed and modified, without the risk of data races.
 Clear and Expressive Syntax
@@ -103,6 +111,7 @@ Rust boasts a clear and expressive syntax that enables developers to write conci
 
 Consider the following example of a simple web server using the hyper crate:
 
+```
 use hyper::{Body, Request, Response, Server};
 use hyper::service::{make_service_fn, service_fn};
 use std::convert::Infallible;
@@ -124,6 +133,7 @@ async fn main() {
       eprintln!("server error: {}", e);
     }
 }
+```
 
 In this example, we create a basic HTTP server that responds with "Hello, Rust!" for every request. Rust's syntax allows us to define the server and its behavior with minimal boilerplate, making it easy to understand and maintain.
 Strong and Flexible Type System
@@ -132,6 +142,7 @@ Rust's type system encourages the use of expressive types, enabling developers t
 
 For example, let's use the Option and Result types to handle errors and optional values:
 
+```
 #[derive(Debug)]
 enum DivisionError {
     DivideByZero,
@@ -152,6 +163,7 @@ fn main() {
         Err(DivisionError::DivideByZero) => println!("Cannot divide by zero"),
     }
 }
+```
 
 In this example, we define a custom error type DivisionError with a single variant DivideByZero. The divide function now returns a Result<f64, DivisionError> to represent either the successful result of the division or a division by zero error.
 

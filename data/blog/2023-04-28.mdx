@@ -23,17 +23,20 @@ Step 1: Add Dependencies to Cargo.toml
 
 To begin, add the necessary dependencies to your Cargo.toml file:
 
+```
 [dependencies]
 aws-sdk-dynamodb = "0.0.25-alpha"
 serde = { version = "1.0", features = ["derive"] }
 serde_json = "1.0"
 tokio = { version = "1", features = ["full"] }
 mockall = { version = "0.10", features = ["derive"] }
+```
 
 Step 2: Define a Trait for Your DynamoDB Operations
 
 Start by defining a trait for the DynamoDB operations you want to mock. In this example, we'll focus on the GetItem and PutItem operations. Create a new file named dynamodb_client.rs and add the following code:
 
+```
 use aws_sdk_dynamodb::Client;
 use aws_sdk_dynamodb::model::{AttributeValue, GetItemInput, PutItemInput};
 use serde::Deserialize;
@@ -61,11 +64,13 @@ impl DynamoDbClient for Client {
         Ok(())
     }
 }
+```
 
 Step 4: Create a Mock Implementation of the Trait
 
 Next, use the mockall crate to generate a mock implementation of the DynamoDbClient trait. Add the following code to dynamodb_client.rs:
 
+```
 #[cfg(test)]
 use mockall::automock;
 
@@ -74,12 +79,13 @@ pub trait DynamoDbClient {
     async fn get_item(&self, input: GetItemInput) -> Result<HashMap<String, AttributeValue>, aws_sdk_dynamodb::Error>;
     async fn put_item(&self, input: PutItemInput) -> Result<(), aws_sdk_dynamodb::Error>;
 }
-``
+```
 
 Step 5: Use the Mock in Your Tests
 
 Now that you have a mock implementation of the DynamoDbClient trait, you can use it in your tests. Create a new file named dynamodb_client_tests.rs and add the following code:
 
+```
 #[cfg(test)]
 mod tests {
     use super::*;
@@ -122,13 +128,14 @@ mod tests {
         assert!(result.is_ok());
     }
 }
+```
 
 In the test cases above, we use the MockDynamoDbClient to test the get_item and put_item operations. The expect_* methods are used to set up expectations on how the mock object should be called, including input parameters, call count, and return values. When the mock object is called as expected, the assertions in the tests will pass.
 Step 6: Run Your Tests
 
 With everything set up, you can now run your tests using the following command:
 
-$ cargo test
+`$ cargo test`
 
 Your tests should run quickly and without requiring a connection to AWS. The mockall crate enables you to easily test your application's logic without incurring the costs and delays of interacting with actual AWS resources.
 

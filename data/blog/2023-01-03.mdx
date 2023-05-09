@@ -1,0 +1,53 @@
+---
+title: 'Decision making'
+date: '2023-01-03'
+tags: ['programming']
+draft: false
+summary: 'Decision making is what makes a computer different from a calculator. It is crucial for programming. I can not stress enough...'
+---
+
+Decision making is what makes a computer different from a calculator. It is crucial for programming. I can not stress enough how important it is. It doesn't seem very important at first, before you know how to program. But once you learn the mindset of programming you will understand how crucial it is.
+
+## Why doesn't it seem important?
+
+I believe it doesn't seem as important as it is because humans are not trained to properly break problems down into the smallest possible piece. You know how to press a button on a website, but you don't think about all of the decisions the computer has to make to serve you the content.
+
+## Breaking down a problem
+
+While programming in its essence is the code, for humans it is much more about a mindset. You need to start to effectively break things down to understand how they work. The general functionality of a large website is quite simple actually. There are some very advanced optimizations that are complex and hard to understand at this stage, but the general functioning is easy. Let's look at how a login function could look in pseudocode.
+
+```
+Login(username, password)
+
+if password length less than 10
+    alert "Password is too short"
+else if username is not in users
+    alert "User is not registered"
+else if password does not match savedPassword
+    alert "Password does not match"
+else
+    alert "User is now logged in"
+```
+
+
+We have a lot of new stuff in here but hopefully it should be pretty self-explanatory.
+
+### Functions
+
+So at the beginning of our code, we declare a new `function`. What is a `function`? The best way to explain a `function` at this point in time is like this, lets say we have a couple of different pages you can log in from, then instead of copying-and-pasting the code from each page, we can write a `function` that takes in an username and a password and does all of the login magic for us. That's exactly what we have done here. In general, use a `function` when you could see yourself reusing the code somewhere else.
+
+### Decisions, Decisions, Decisions
+
+Besides the `function`, the rest of the code is quite similar to the pseudocode in our previous example. We added a couple of more `if`s, and the usefulness has increased exponentially, but there isn't any difficult code in here.
+
+## If, else if, else
+
+So in our previous examples we only had `if`, now we also have `else if` and finally this `else` thing, what does all of that mean? Before I answer this question, why don't you try to think about it logically?
+
+### How a computer evaluates statements
+
+A computer is going to go through each statement individually, and `if` it finds a match, it is going to ignore whatever could be in the other `else if`s. The `else` is what is called a _catch-all_ or _fallback_ meaning if nothing `else` is `true`, do this.
+
+# Usefulness
+
+You might think that this is totally unapplicable but you have to trust me when I say that it is not. This is going to be very useful and this is the way that most programs are built. The problem at this point is that you are just starting to climb the mountain of knowledge needed for programming and it's hard to see the top right now, but trust me when I say, **we are getting there**.

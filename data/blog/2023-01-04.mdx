@@ -1,0 +1,102 @@
+---
+title: 'Another one'
+date: '2023-01-04'
+tags: ['programming']
+draft: false
+summary: 'Another one, Another one, Another one, Another one, Another one, Another one, Another one...'
+---
+#### Another one
+#### Another one
+#### Another one
+#### Another one
+#### Another one
+#### Another one
+#### Another one
+#### Another one
+#### Another one
+#### Another one
+
+Hopefully, at this point, you are wondering what is going on. `if` you are not, this course might be too basic for you.
+
+## So what is going on?
+
+Why are there 10 _Another one_'s above? Well I'm not telling you, but you will be able to figure it out after this.
+
+## Rewinding
+
+There was something else in our pseudocode on the previous page that we just skipped without telling you even though it is huge to programming. Actually huge doesn't even cut it. Along with `if` statements, this is what makes a computer a computer. So remember back in our first text when we said that computers are really good at doing things very many times? Well now we are going to do that. So lets take a look at the code on the previous page.
+
+```
+Login(username, password)
+if password length less than 10
+    alert "Password is too short"
+else if username is not in users
+    alert "User is not registered"
+else if password does not match savedPassword
+    alert "Password does not match"
+else
+    alert "User is now logged in"
+```
+
+
+## What did we skip?
+Which part here did we just skip over? Do you see it? It's right here `else if username is not in users`. That might not seem like magic, but it totally is. So lets take a look at how we could have done this previously.
+
+```
+users = "Axel", "John", "David"
+user = "David"
+
+if user is users.first
+    alert "User is Axel"
+else if user is users.second
+    alert "User is John"
+else if user is users.third
+    alert "User is David"
+else
+    alert "User is not registered"
+```
+
+
+## This works!!!
+
+This works. It is going to alert us of who the user is, or if there is no user at all, it is going to tell us that. But programmers are very lazy, and lets say you are FaceBook and you have 2 billion users. Then they would probably have 100 programmers working around the clock just to add new if statements for each new user and it would not make any sense.
+
+# =
+
+What are we doing with the `=`? All we are doing is setting the value before the `=` to the value after the `=`. This is called assigning a value to a variable.
+
+#### Have I created variables??
+
+Yes you have. Well done! You have created both the `user` and the `users` variable. But truth be told, this isn't the first time you have created variables. Since our `function` accepted variables.
+
+## So what do we do?
+
+Like a salesman I have the solution for you. With this there is no longer a need for programmers to keep adding if statements. The solution is...
+
+# LOOPS
+
+Loops work quite like the way we did in our first code example `username is not in users` but lets expand that a little bit. What a loop is doing is going through each item in a list and doing something, and then it's done. So lets say you would want to go through each user in the list and check if it's the user trying to log in. We would do that in the following way.
+
+```
+users = "Axel", "John", "David"
+user = "David"
+for username in users
+    if user is username
+        alert "User is found"
+```
+
+With that said, if we would want to alert Another one ten times, we don't have to copy-and-paste it 10 separate times. We can just use a loop. Let's take a look at that.
+
+```
+iteration = 1
+while iteration is less than 11
+    alert "Another one"
+    iteration = iteration + 1
+```
+
+Okay, wow, what happened now? We used something called iteration and we updated it, and I'm just too confused I'm quitting this course.
+
+
+### STOP!
+
+This might seem a bit difficult, but it's not. It's very easy, so let's try to break it down. An iteration is just a cycle count. Or loop count. So all that we are doing is counting the number of loops we have done. Now why are we doing this? Well, because we need to know when we are done. If we don't count the loops, we won't know when to stop the program.

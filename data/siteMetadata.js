@@ -13,7 +13,6 @@ const siteMetadata = {
   email: 'axel@deploy.software',
   github: 'https://github.com/AxelNilsson',
   twitter: 'https://twitter.com/axel__nilsson',
-  facebook: 'https://facebook.com',
   youtube: 'https://youtube.com',
   linkedin: 'https://www.linkedin.com',
   locale: 'en-US',

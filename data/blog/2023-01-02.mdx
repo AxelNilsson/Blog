@@ -1,0 +1,54 @@
+---
+title: 'Making our first decision'
+date: '2023-01-02'
+tags: ['programming']
+draft: false
+summary: 'Let's say you have created a webpage like this one and you want to make sure that your users are...'
+---
+
+# Making our first decision
+
+Let's say you have created a webpage like this one and you want to make sure that your users are adhering to certain standards when it comes to computers. You want to make sure that their password is at the very least 10 characters long.
+
+## How would we go about this?
+
+It's time for you to see the first bit of code! The programming language we are going to use for this first Computer Science course is [JavaScript](https://www.javascript.com/). If you are from an academic background or you are familiar with programming you might scoff right now, thinking that starting with JavaScript is a very dumb decision since it removes a lot of the complexity of coding and makes things seem more simple than what they are. Ding ding ding. That's exactly what we want. We are unfortunately going to need some _boilerplate code_ for this, since it's a bit more applicable than your most simple example, but this is fine. Try to ignore [or tinker with and see what happens] the parts that we are not going to talk about.
+
+## Understanding our problem
+
+Before we write any code in JavaScript, we need to understand what our problem is, so let's try to write it down in plain old English, but with some parts removed for simplicity. This is what's called **pseudocode** which means that no computer can understand it, meanwhile you should be able to understand it with no coding background, and it's simple for a human to convert it to code.
+
+## What is the problem we are trying to solve?
+
+So the actual problem is that we want to solve is to check if a password is longer than 10 characters or not.
+
+### Pseudocode
+
+_The things inside brackets [] are comments_
+
+```
+if [the] length of [the] password is less than 10 characters
+alert [the user] "Password is too short"
+```
+
+Even if you have never ever programmed before, this should be pretty straight forward. But our pseudo-code still contains a lot of words that humans need, that the computer doesn't. Let's try to make it more compact.
+
+### Pseudocode attempt 2
+```
+if password length less than 10
+alert "Password is too short"
+```
+
+We have removed a lot of the words needed for humans, but we can still understand it, right? If you understand every part of this statement above then you are well on your way to becoming a programmer.
+
+### JavaScript
+
+Let's look at the same code in JavaScript.
+
+```javascript
+if (password.length < 10) {
+    alert("Password is too short")
+}
+```
+
+Wait a minute. This can't be right? This looks awfully similar to our _pseudocode_. Is programming really this easy? **YES!** We introduce weird parenthesis and curly braces but in essence, programming is just this easy.

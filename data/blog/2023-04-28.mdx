@@ -1,14 +1,10 @@
 ---
-title: 'The Time Machine'
+title: 'How to Use the mockall Crate to Mock AWS SDK for DynamoDB in Rust for Faster, Offline Testing'
 date: '2023-04-28'
 tags: ['writings', 'book', 'reflection']
 draft: false
-summary: 'The Time Traveller (for so it will be convenient to speak of him) was
-expounding a recondite matter to us. His pale grey eyes shone and
-twinkled, and his usually pale face was flushed and animated...'
+summary: "When writing applications in Rust that interact with AWS DynamoDB, it's crucial to have a solid testing strategy in..."
 ---
-
-# How to Use the mockall Crate to Mock AWS SDK for DynamoDB in Rust for Faster, Offline Testing
 
 When writing applications in Rust that interact with AWS DynamoDB, it's crucial to have a solid testing strategy in place. However, running tests against actual AWS resources can be slow, expensive, and require an active internet connection. This is where mocking comes into play. The mockall crate allows you to create mock versions of your AWS SDK for DynamoDB dependencies, speeding up your tests and making them available offline. In this blog post, we will explore how to use the mockall crate to mock AWS SDK for DynamoDB in Rust for testing purposes.
 Prerequisites:
@@ -130,7 +126,7 @@ mod tests {
 }
 ```
 
-In the test cases above, we use the MockDynamoDbClient to test the get_item and put_item operations. The expect_* methods are used to set up expectations on how the mock object should be called, including input parameters, call count, and return values. When the mock object is called as expected, the assertions in the tests will pass.
+In the test cases above, we use the MockDynamoDbClient to test the get*item and put_item operations. The expect*\* methods are used to set up expectations on how the mock object should be called, including input parameters, call count, and return values. When the mock object is called as expected, the assertions in the tests will pass.
 Step 6: Run Your Tests
 
 With everything set up, you can now run your tests using the following command:
